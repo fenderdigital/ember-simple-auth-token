@@ -183,7 +183,7 @@ export default Base.extend({
     return Ember.$.ajax({
       url: this.serverTokenEndpoint,
       method: 'POST',
-      data: JSON.stringify(data),
+      data: '{"data":{"type":"tokens","attributes":' + JSON.stringify(data) + '}}',
       dataType: 'json',
       contentType: 'application/json',
       headers: this.headers,
