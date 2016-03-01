@@ -185,7 +185,7 @@ export default Base.extend({
       method: 'POST',
       data: '{"data":{"type":"tokens","attributes":' + JSON.stringify(data) + '}}',
       dataType: 'json',
-      contentType: 'application/json',
+      contentType: 'application/vnd.api+json',
       headers: this.headers,
       beforeSend: (xhr, settings) => {
         xhr.setRequestHeader('Accept', settings.accepts.json);
