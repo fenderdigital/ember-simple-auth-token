@@ -129,7 +129,7 @@ export default Base.extend({
 
       this.makeRequest(data, headers).then(response => {
         Ember.run(() => {
-          resolve(this.getResponseData(response));
+          resolve(this.getResponseData(response.data.attributes));
         });
       }, xhr => {
         Ember.run(() => { reject(xhr.responseJSON || xhr.responseText); });
