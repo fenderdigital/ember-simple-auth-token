@@ -128,9 +128,16 @@ export default Base.extend({
       const data = this.getAuthenticateData(credentials);
 
       this.makeRequest(data, headers).then(response => {
-        Ember.run(() => {
-          resolve(this.getResponseData(response.data.attributes));
-        });
+        if (response.data.attributes['verified-at']) {
+          Ember.run(() => {
+            resolve(this.getResponseData(response.data.attributes));
+          });
+        } else {
+          // var vererr = '{"errors":[{"detail":"Your email is not verified.","status":401}]}';
+          // Ember.run(() => { reject( JSON.parse(vererr) || vererr); });
+          alert('Your email is not verified.');
+          return;
+        }
       }, xhr => {
         Ember.run(() => { reject(xhr.responseJSON || xhr.responseText); });
       });
