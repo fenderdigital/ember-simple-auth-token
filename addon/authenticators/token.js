@@ -135,7 +135,8 @@ export default Base.extend({
         } else {
           // var vererr = '{"errors":[{"detail":"Your email is not verified.","status":401}]}';
           // Ember.run(() => { reject( JSON.parse(vererr) || vererr); });
-          alert('Your email is not verified.');
+          // alert('Your email is not verified.');
+          window.location.href = 'email-expired';
           return;
         }
       }, xhr => {
